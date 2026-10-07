@@ -233,7 +233,6 @@ h1, h2, h3 { font-family: var(--font-display); }
 .site-footer { padding: 37px 0 22px; color: #b0bab1; background: #0b111d; }
 .footer-top { display: flex; align-items: center; justify-content: space-between; padding-bottom: 31px; }
 .footer-brand { color: #eef3ec; }
-.footer-top > p { margin: 0; color: #929c93; font-size: 10px; line-height: 1.7; }
 .footer-back { color: #cbd5cb; font-size: 10px; }
 .footer-back span { margin-left: 7px; color: var(--accent); }
 .footer-bottom { display: flex; justify-content: space-between; padding-top: 18px; color: #778179; border-top: 1px solid rgba(255,255,255,.1); font-size: 9px; }
@@ -255,6 +254,7 @@ h1, h2, h3 { font-family: var(--font-display); }
   .hero-visual { transform: scale(.83); }
   .sectors-layout { grid-template-columns: .8fr 1.2fr; gap: 38px; }
   .contact-layout { gap: 45px; }
+  .service-grid { grid-template-columns: repeat(2, 1fr); }
   .service-card { padding-inline: 17px; }
   .service-card h3 { font-size: 15px; }
 }
@@ -316,7 +316,6 @@ h1, h2, h3 { font-family: var(--font-display); }
   .contact-layout { grid-template-columns: 1fr; gap: 36px; }
   .contact-form { padding: 24px 20px; }
   .footer-top { align-items: flex-start; flex-wrap: wrap; gap: 23px; }
-  .footer-top > p { order: 3; width: 100%; }
   .footer-bottom { align-items: flex-start; flex-direction: column; gap: 9px; }
 }
 @media (max-width: 370px) {
@@ -360,7 +359,7 @@ h1, h2, h3 { font-family: var(--font-display); }
   .contact-form label { font-size: 13px; }
   .contact-form input, .contact-form textarea, .contact-form select { padding: 13px 14px; font-size: 14px; }
   .form-heading, .form-note { font-size: 11px; }
-  .footer-top > p, .footer-back, .footer-bottom { font-size: 12px; }
+  .footer-back, .footer-bottom { font-size: 12px; }
 }
 
 .motion-showcase { padding: 105px 0 100px; }
@@ -448,7 +447,7 @@ h1, h2, h3 { font-family: var(--font-display); }
   .contact-form .service-option { min-height: 48px; align-items: center; padding: 11px; font-size: 14px; line-height: 1.5; }
   .contact-form .service-option input { width: 19px; height: 19px; flex-basis: 19px; }
   .form-note { font-size: 12px; line-height: 1.55; }
-  .footer-top > p, .footer-back, .footer-bottom { font-size: 12px; line-height: 1.6; }
+  .footer-back, .footer-bottom { font-size: 12px; line-height: 1.6; }
   .motion-showcase { padding: 76px 0; }
   .motion-grid { grid-template-columns: 1fr; gap: 17px; }
   .motion-card:last-child { grid-column: auto; display: block; }
@@ -541,103 +540,6 @@ h1, h2, h3 { font-family: var(--font-display); }
 }
 
 /* --------------------------------------------------------------------------
-   Resultados (stats)
--------------------------------------------------------------------------- */
-.stats { padding: 10px 0 74px; }
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border-top: 1px solid var(--line);
-  border-left: 1px solid var(--line);
-}
-.stat-item {
-  position: relative;
-  padding: 34px 26px 32px;
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-.stat-number {
-  color: #2f6fb0;
-  font-family: var(--font-display);
-  font-size: clamp(40px, 4.4vw, 56px);
-  font-weight: 700;
-  letter-spacing: -0.06em;
-  line-height: 1;
-}
-.stat-suffix {
-  color: #4e9bea;
-  font-family: var(--font-display);
-  font-size: clamp(22px, 2.4vw, 30px);
-  font-weight: 600;
-  letter-spacing: -0.04em;
-}
-.stat-label {
-  display: block;
-  max-width: 210px;
-  margin-top: 14px;
-  color: var(--ink-soft);
-  font-size: 13px;
-  line-height: 1.6;
-}
-/* --------------------------------------------------------------------------
-   Testimonios
--------------------------------------------------------------------------- */
-.testimonials { padding: 96px 0 106px; }
-.testimonials-header { max-width: 720px; margin-bottom: 46px; }
-.testimonials-header h2 {
-  margin-bottom: 0;
-  font-size: clamp(34px, 4vw, 49px);
-  font-weight: 600;
-  letter-spacing: -0.06em;
-  line-height: 1.15;
-}
-.testimonials-header h2 span { color: #7186a1; }
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-.testimonial-card {
-  padding: 28px 26px 26px;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  background: #fff;
-  box-shadow: 0 16px 40px rgba(31, 57, 85, 0.06);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  will-change: transform;
-}
-.testimonial-card:hover { box-shadow: 0 24px 54px rgba(31, 57, 85, 0.12); }
-.testimonial-card:hover .testimonial-stars { color: var(--accent); transform: translateY(-2px); }
-.testimonial-stars {
-  margin-bottom: 16px;
-  color: #f4b740;
-  letter-spacing: 0.14em;
-  font-size: 14px;
-}
-.testimonial-card blockquote {
-  margin: 0 0 22px;
-  color: #2a3948;
-  font-size: 15px;
-  line-height: 1.78;
-}
-.testimonial-author {
-  display: flex;
-  align-items: center;
-  gap: 13px;
-  padding-top: 18px;
-  border-top: 1px solid var(--line);
-}
-.testimonial-author img {
-  width: 46px;
-  height: 46px;
-  flex: 0 0 46px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-.testimonial-author strong { display: block; font-size: 14px; }
-.testimonial-author span { color: var(--ink-soft); font-size: 12px; line-height: 1.4; }
-
-/* --------------------------------------------------------------------------
    Banda de llamada a la acción
 -------------------------------------------------------------------------- */
 .cta-banner {
@@ -713,66 +615,9 @@ h1, h2, h3 { font-family: var(--font-display); }
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .case-card:hover { transform: translateY(-6px); box-shadow: 0 26px 58px rgba(31, 57, 85, 0.13); }
-.case-card:hover .case-media::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 12px;
-  background: linear-gradient(135deg, rgba(120,186,255,.12), rgba(120,186,255,.04));
-  pointer-events: none;
-}
-.case-card:hover .case-badge {
-  background: rgba(120,186,255,.15);
-  border-color: rgba(120,186,255,.5);
-}
-.case-media {
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 16 / 10;
-  background: #0e1725;
-}
-.case-media img {
-  position: absolute;
-  top: -6%;
-  left: 0;
-  width: 100%;
-  height: 112%;
-  object-fit: cover;
-  display: block;
-}
-.case-badge {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  padding: 6px 13px;
-  color: #eaf3ff;
-  background: rgba(17, 26, 39, 0.72);
-  border: 1px solid rgba(120, 186, 255, 0.4);
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  backdrop-filter: blur(8px);
-}
 .case-body { padding: 22px 22px 24px; }
 .case-body h3 { margin-bottom: 10px; font-size: 20px; letter-spacing: -0.035em; }
 .case-body p { margin-bottom: 18px; color: var(--ink-soft); font-size: 14px; line-height: 1.7; }
-.case-metrics {
-  display: flex;
-  gap: 26px;
-  padding-top: 16px;
-  border-top: 1px solid var(--line);
-}
-.case-metrics > div { display: flex; flex-direction: column; gap: 3px; }
-.case-metrics strong {
-  color: #2f6fb0;
-  font-family: var(--font-display);
-  font-size: 26px;
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  line-height: 1;
-}
-.case-metrics span { color: #73808b; font-size: 12px; line-height: 1.4; }
 
 /* --------------------------------------------------------------------------
    Banda "Automatización en acción" (vídeo)
@@ -832,8 +677,6 @@ h1, h2, h3 { font-family: var(--font-display); }
    Responsive de las secciones nuevas
 -------------------------------------------------------------------------- */
 @media (max-width: 920px) {
-  .stats-grid { grid-template-columns: repeat(2, 1fr); }
-  .testimonials-grid { grid-template-columns: 1fr 1fr; }
   .cases-grid { grid-template-columns: 1fr 1fr; }
   .cta-inner { flex-direction: column; align-items: flex-start; gap: 26px; }
   .cta-copy p { max-width: none; }
@@ -841,21 +684,10 @@ h1, h2, h3 { font-family: var(--font-display); }
 }
 
 @media (max-width: 680px) {
-  .stats { padding: 4px 0 56px; }
-  .stat-item { padding: 26px 18px; }
-  .stat-number { font-size: clamp(36px, 11vw, 48px); }
-  .stat-label { margin-top: 10px; font-size: 12px; }
-  .testimonials { padding: 74px 0 82px; }
-  .testimonials-header { margin-bottom: 30px; }
-  .testimonials-header h2 { font-size: clamp(32px, 9vw, 42px); }
-  .testimonials-grid { grid-template-columns: 1fr; gap: 16px; }
-  .testimonial-card { padding: 22px 20px; }
-  .testimonial-card blockquote { font-size: 14px; }
   .cases { padding: 78px 0 70px; }
   .cases-grid { grid-template-columns: 1fr; gap: 20px; }
   .case-body { padding: 20px 18px 22px; }
   .case-body h3 { font-size: 18px; }
-  .case-metrics strong { font-size: 23px; }
   .demo-band { padding: 82px 0; }
   .demo-inner h2 { font-size: clamp(30px, 9vw, 42px); }
   .demo-inner > p:not(.eyebrow) { font-size: 15px; }
@@ -866,9 +698,6 @@ h1, h2, h3 { font-family: var(--font-display); }
   .wave-divider svg { height: 54px; }
 }
 
-@media (max-width: 370px) {
-  .stats-grid { grid-template-columns: 1fr; }
-}
 
 /* --------------------------------------------------------------------------
    Movimiento reducido: contenido visible y vídeos en primer fotograma
@@ -888,15 +717,259 @@ h1, h2, h3 { font-family: var(--font-display); }
   .brand-tagline { display: none; }
   .main-nav { gap: 20px; }
 
-  .cases-grid .case-card:last-child {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: stretch;
+}
+
+/* ==========================================================================
+   Ampliacion: foco accesible, reto, ejemplos de uso, FAQ y pie de pagina
+   ========================================================================== */
+
+/* Estados de foco visibles para navegacion por teclado */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent-dark);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+.section-dark a:focus-visible,
+.section-dark button:focus-visible,
+.site-header a:focus-visible,
+.demo-band a:focus-visible,
+.contact a:focus-visible,
+.sectors a:focus-visible,
+.site-footer a:focus-visible,
+.site-footer button:focus-visible {
+  outline-color: var(--accent);
+}
+
+/* Lista de problemas (seccion El reto) */
+.reto-list {
+  max-width: 660px;
+  margin: 0 0 30px;
+  padding: 0;
+  border-top: 1px solid var(--line);
+  list-style: none;
+}
+.reto-list li {
+  position: relative;
+  padding: 13px 0 13px 30px;
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+  line-height: 1.65;
+}
+.reto-list li::before {
+  content: "→";
+  position: absolute;
+  left: 2px;
+  color: var(--accent-dark);
+  font-weight: 700;
+}
+
+/* Ejemplos de soluciones (casos de uso) */
+.case-kicker {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: #4778b0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+.case-tasks {
+  margin: 0;
+  padding: 16px 0 0;
+  border-top: 1px solid var(--line);
+  list-style: none;
+}
+.case-tasks li {
+  position: relative;
+  padding: 5px 0 5px 20px;
+  color: var(--ink-soft);
+  font-size: 13px;
+  line-height: 1.55;
+}
+.case-tasks li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #5688bd;
+}
+
+/* Preguntas frecuentes */
+.faq {
+  padding: 104px 0;
+}
+.faq-layout {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  align-items: start;
+  gap: 70px;
+}
+.faq-intro .eyebrow {
+  margin-bottom: 18px;
+}
+.faq-intro h2 {
+  margin-bottom: 18px;
+  font-size: clamp(32px, 3.6vw, 44px);
+  font-weight: 600;
+  letter-spacing: -0.055em;
+  line-height: 1.16;
+}
+.faq-intro h2 span {
+  color: #7186a1;
+}
+.faq-intro > p:not(.eyebrow) {
+  margin-bottom: 24px;
+  color: var(--ink-soft);
+  font-size: 15px;
+  line-height: 1.75;
+}
+.faq-list {
+  border-top: 1px solid var(--line);
+}
+.faq-item {
+  border-bottom: 1px solid var(--line);
+}
+.faq-item summary {
+  position: relative;
+  padding: 20px 46px 20px 0;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.4;
+  list-style: none;
+}
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+.faq-item summary::after {
+  content: "+";
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  color: var(--accent-dark);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1;
+  transform: translateY(-50%);
+}
+.faq-item[open] summary::after {
+  content: "–";
+}
+.faq-answer p {
+  max-width: 660px;
+  margin: 0 0 20px;
+  color: var(--ink-soft);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* Pie de pagina ampliado */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.9fr 0.9fr;
+  gap: 44px;
+  padding-bottom: 34px;
+}
+.footer-brand {
+  display: inline-flex;
+  margin-bottom: 16px;
+}
+.footer-brandcol > p {
+  max-width: 300px;
+  margin-bottom: 14px;
+  color: #929c93;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.footer-email {
+  color: #b9d9f8;
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.footer-email:hover {
+  color: var(--accent);
+}
+.footer-title {
+  margin-bottom: 16px;
+  color: #eef3ec;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+.footer-nav a {
+  color: #b0bab1;
+  font-size: 13px;
+}
+.footer-nav a:hover {
+  color: var(--accent);
+}
+.footer-zone .footer-title {
+  margin-bottom: 14px;
+}
+.footer-zone > p:not(.footer-title) {
+  color: #929c93;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.footer-zone .footer-back {
+  display: inline-flex;
+  margin-top: 18px;
+}
+
+@media (max-width: 920px) {
+  .faq {
+    padding: 88px 0;
   }
-  .cases-grid .case-card:last-child .case-media {
-    aspect-ratio: auto;
-    height: 100%;
-    min-height: 240px;
+  .faq-layout {
+    grid-template-columns: 1fr;
+    gap: 42px;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 34px;
+  }
+  .footer-brandcol {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 680px) {
+  .faq {
+    padding: 74px 0;
+  }
+  .faq-item summary {
+    padding: 17px 42px 17px 0;
+    font-size: 15px;
+  }
+  .faq-answer p {
+    font-size: 13px;
+    line-height: 1.75;
+  }
+  .reto-list li {
+    padding: 12px 0 12px 26px;
+    font-size: 13px;
+  }
+  .case-kicker {
+    font-size: 10px;
+  }
+  .case-tasks li {
+    font-size: 12px;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
   }
 }

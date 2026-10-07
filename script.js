@@ -315,94 +315,6 @@
     revealElements.forEach((element) => element.classList.add("is-visible"));
   }
 
-  /* ----------------------------------------------------------------------
-     Contador animado de resultados
-  ---------------------------------------------------------------------- */
-  const counters = $$(".stat-number[data-count]");
-  const formatNumber = (value) => new Intl.NumberFormat("es-ES").format(value);
-
-  const runCounter = (element) => {
-    const target = Number(element.dataset.count) || 0;
-    const duration = 1600;
-    const startTime = performance.now();
-
-    const tick = (now) => {
-      const progress = Math.min(1, (now - startTime) / duration);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      element.textContent = formatNumber(Math.round(target * eased));
-      if (progress < 1) requestAnimationFrame(tick);
-      else element.textContent = formatNumber(target);
-    };
-    requestAnimationFrame(tick);
-  };
-
-  if (counters.length) {
-    if ("IntersectionObserver" in window && !prefersReducedMotion.matches) {
-      const counterObserver = new IntersectionObserver(
-        (entries, observer) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              runCounter(entry.target);
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.6 },
-      );
-      counters.forEach((counter) => counterObserver.observe(counter));
-    } else {
-      counters.forEach((counter) => {
-        counter.textContent = formatNumber(Number(counter.dataset.count) || 0);
-      });
-    }
-  }
-
-  /* ----------------------------------------------------------------------
-     Efecto de inclinación (tilt) en tarjetas de testimonios
-  ---------------------------------------------------------------------- */
-  const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-
-  const initTilt = () => {
-    if (!canHover || prefersReducedMotion.matches) return;
-    $$("[data-tilt]").forEach((card) => {
-      let frame = 0;
-      let targetX = 0;
-      let targetY = 0;
-      let currentX = 0;
-      let currentY = 0;
-
-      const loop = () => {
-        frame = 0;
-        currentX += (targetX - currentX) * 0.14;
-        currentY += (targetY - currentY) * 0.14;
-        card.style.transform = `perspective(900px) rotateX(${currentY.toFixed(2)}deg) rotateY(${currentX.toFixed(2)}deg) translateY(-4px)`;
-        if (Math.abs(targetX - currentX) > 0.05 || Math.abs(targetY - currentY) > 0.05 || targetX || targetY) {
-          frame = requestAnimationFrame(loop);
-        } else {
-          card.style.transform = "";
-        }
-      };
-
-      const requestLoop = () => { if (!frame) frame = requestAnimationFrame(loop); };
-
-      card.addEventListener("pointermove", (event) => {
-        const rect = card.getBoundingClientRect();
-        const px = (event.clientX - rect.left) / rect.width - 0.5;
-        const py = (event.clientY - rect.top) / rect.height - 0.5;
-        targetX = px * 8;
-        targetY = -py * 8;
-        requestLoop();
-      });
-
-      card.addEventListener("pointerleave", () => {
-        targetX = 0;
-        targetY = 0;
-        requestLoop();
-      });
-    });
-  };
-
-  initTilt();
 
   /* ----------------------------------------------------------------------
      Vídeos de fondo: reproducir solo cuando están a la vista
@@ -554,23 +466,6 @@
         scrollTrigger: { trigger: hero, start: "top top", end: "bottom top", scrub: true },
       });
     }
-
-    $$(".case-media img").forEach((img) => {
-      gsap.fromTo(
-        img,
-        { yPercent: -6 },
-        {
-          yPercent: 6,
-          ease: "none",
-          scrollTrigger: {
-            trigger: img.closest(".case-card"),
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-          },
-        },
-      );
-    });
 
     const demoInner = $(".demo-inner");
     if (demoInner) {
